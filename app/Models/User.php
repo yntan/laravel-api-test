@@ -38,7 +38,7 @@ class User extends Authenticatable
 
         if (strlen($email) && strlen($phone)) {
             $query->where('email', $email)
-                ->orWhere('phone', $phone);
+                ->where('phone', $phone);
 
         } else {
 
