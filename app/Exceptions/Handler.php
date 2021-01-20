@@ -53,7 +53,13 @@ class Handler extends ExceptionHandler
             return response()->json([
                 'error' => 'Method not allowed'
             ], 405);
-         }
+        }
+
+        if ($exception instanceof \PDOException) {
+            return response()->json([
+                'error' => 'Resource not found'
+            ], 404);
+        }
 
         return parent::render($request, $exception);
     }
